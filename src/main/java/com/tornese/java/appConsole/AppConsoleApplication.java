@@ -48,26 +48,23 @@ public class AppConsoleApplication {
 
 		while (true) {
 
-			//Console cnsl = System.console();
 			System.out.println("=================");
 			System.out.println("Seja Bem vindo ao seu software");
 			System.out.println("=================");
-			int sair = InputControl.lerNumero("Digite \n1 para continuar \n0 para sair\n", config.getContinuarOuSair());//Integer.parseInt(cnsl.readLine("Digite \n1 para continuar \n0 para sair\n"));
+			int sair = InputControl.lerNumero("Digite \n1 para continuar \n0 para sair\n", config.getContinuarOuSair());
 			if (sair == 0) break;
 
 			Pedido pedido = new Pedido();
 			pedido.setCliente(new Cliente());
-
-
-			pedido.getCliente().setNome(InputControl.lerString("Digite o nome do cliente que quer comprar as caixas:\n"));//cnsl.readLine("Digite o nome do cliente que quer comprar as caixas:\n"));
-			int qtdCaixas = InputControl.lerNumero("Digite a quantidade de caixas que o " + pedido.getCliente().getNome() + " deseja:\n");//Integer.parseInt(cnsl.readLine("Digite a quantidade de caixas que o " + pedido.getCliente().getNome() + " deseja:\n"));
+			pedido.getCliente().setNome(InputControl.lerString("Digite o nome do cliente que quer comprar as caixas:\n"));
+			int qtdCaixas = InputControl.lerNumero("Digite a quantidade de caixas que o " + pedido.getCliente().getNome() + " deseja:\n");
 			pedido.setQtdCaixas(qtdCaixas);
 
 			System.out.println("[" + qtdCaixas + "]");// outra maneira: System.out.printf("[%s]", qtdCaixas);
 
 			pedido.setTotalDeLaranjas(qtdCaixas, config.getValorLaranja(), config.getQtdDeLaranjaPorCaixas());
 
-			String tipoPagamento = InputControl.lerString(config.getaVistaOuParcelado(),"A compra será a vista ou parcelado? \n A - A vista \n P - Parcelado : \n");//cnsl.readLine("A compra será a vista ou parcelado? \n A - A vista \n P - Parcelado : \n");
+			String tipoPagamento = InputControl.lerString(config.getaVistaOuParcelado(),"A compra será a vista ou parcelado? \n A - A vista \n P - Parcelado : \n");
 			
 			boolean aVista = tipoPagamento.toUpperCase().equals(config.getaVistaOuParcelado()[0]);
 			if (aVista) {
@@ -75,7 +72,7 @@ public class AppConsoleApplication {
 				pedido.alterarValorParaPagamentoAVista(config.getValorParaDesconto(), qtdCaixas, config.getQtdCaixasPromocao(), config.getPorcentagemDesconto());
 				
 			} else {
-				pedido.setParcelas(InputControl.lerNumero("Você selecionou pagamento parcelado, Digite a quantidade de parcelas: \n"));//Integer.parseInt(cnsl.readLine("Você selecionou pagamento parcelado, Digite a quantidade de parcelas: \n")));
+				pedido.setParcelas(InputControl.lerNumero("Você selecionou pagamento parcelado, Digite a quantidade de parcelas: \n"));
 				if (pedido.getParcelas() > config.getMaximoparcelas()) {
 					System.out.println("Quantidade de parcelas Invalida, iremos assumir que será em " + config.getMaximoparcelas() + " vezes");
 					pedido.setParcelas(config.getMaximoparcelas());
