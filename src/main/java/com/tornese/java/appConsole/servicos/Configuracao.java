@@ -9,6 +9,16 @@ public class Configuracao {
     private int porcentagemAcrescimo = 15;
     private int maximoparcelas = 12;
     private double valorParaDesconto = 100;
+    private int[] continuarOuSair = {0,1};
+    private String[] aVistaOuParcelado = {"A","P"};
+
+    public String[] getaVistaOuParcelado() {
+        return aVistaOuParcelado;
+    }
+
+    public int[] getContinuarOuSair() {
+        return continuarOuSair;
+    }
 
     public double getValorLaranja() {
         return valorLaranja;
