@@ -91,7 +91,7 @@ public class AppConsoleApplication {
 			System.out.println("O seu lucro é de : R$ " + pedido.getLucroAReceber());
 			System.out.println("O valor total a cobrar do cliente é de : R$ " + pedido.getValorTotalAlterado());
 			System.out.println("O cliente escolheu o tipo de pagamento " + (aVista ? "A vista" : "Parcelado em " + pedido.getParcelas() + " vezes"));
-			if (!aVista) {
+			if (!aVista && pedido.getParcelas() != 1) {
 				System.out.println("Para o pagamento parcelado cobramos o juros de: R$ " + pedido.valorDoJuros());
 				System.out.println("O valor da parcela será de : R$ " + pedido.valorDaParcela());
 			} else {
@@ -101,12 +101,13 @@ public class AppConsoleApplication {
 
 			
 		}
+		System.out.println("RESUMO");
 		for(int i=0; i<pedidos.size(); i++){
 			Pedido pedido = pedidos.get(i);
 			System.out.println("=================");
 			System.out.println("Cliente: " + pedido.getCliente().getNome());
 			System.out.println("Quantidade de Caixas: " + pedido.getQtdCaixas());
-			System.out.println("Valor total a pagar: " + pedido.getValorTotal());
+			System.out.println("Valor total a pagar: " + pedido.getValorTotalAlterado());
 			System.out.println("=================");
 
 		}
